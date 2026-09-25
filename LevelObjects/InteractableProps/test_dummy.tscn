@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://da1mf773edha"]
+
+[ext_resource type="Script" uid="uid://n0xcuav7382e" path="res://LevelObjects/InteractableProps/test_dummy.gd" id="1_l1s1u"]
+[ext_resource type="Script" uid="uid://cmxrxcn0khcdy" path="res://Characters/hitbox.gd" id="2_o3mlp"]
+[ext_resource type="PackedScene" uid="uid://dnag4uncvm4y8" path="res://Assets/models/props/Fantasy Props MegaKit[Standard]/Exports/glTF/Dummy.gltf" id="3_egu17"]
+[ext_resource type="AudioStream" uid="uid://djht6kkal1d6v" path="res://Assets/audio/sfx/Sound FX Starter Pack Vol. 1/Medieval/Parry.wav" id="3_iikes"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cwdek"]
+size = Vector3(0.5, 1.9, 0.5)
+
+[node name="TestDummy" type="Node3D" unique_id=1192776595]
+script = ExtResource("1_l1s1u")
+
+[node name="Hitbox" type="Area3D" parent="." unique_id=998902389]
+collision_layer = 64
+script = ExtResource("2_o3mlp")
+audio = ExtResource("3_iikes")
+metadata/_custom_type_script = "uid://cmxrxcn0khcdy"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=644044770]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0)
+shape = SubResource("BoxShape3D_cwdek")
+
+[node name="Dummy2" parent="." unique_id=77036798 instance=ExtResource("3_egu17")]

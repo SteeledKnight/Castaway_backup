@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://bk8o70xun36xx"]
+
+[ext_resource type="Script" uid="uid://bmmq1wbi2a6kx" path="res://LevelObjects/Doors_Switches/switch.gd" id="1_c4s01"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p2ykt"]
+albedo_color = Color(0.57, 0.57, 0.57, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cwdek"]
+material = SubResource("StandardMaterial3D_p2ykt")
+size = Vector3(1, 0.15, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5xtl5"]
+size = Vector3(1, 0.15, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t2df4"]
+albedo_color = Color(1, 0.25, 0.25, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ielch"]
+material = SubResource("StandardMaterial3D_t2df4")
+size = Vector3(0.75, 0.25, 0.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c4s01"]
+size = Vector3(0.75, 0.25, 0.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cwdek"]
+size = Vector3(0.5, 0.25, 0.5)
+
+[node name="Switch" type="Node3D" unique_id=778868786]
+script = ExtResource("1_c4s01")
+
+[node name="Base" type="MeshInstance3D" parent="." unique_id=1839550786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
+mesh = SubResource("BoxMesh_cwdek")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Base" unique_id=547100017]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Base/StaticBody3D" unique_id=1677894536]
+shape = SubResource("BoxShape3D_5xtl5")
+
+[node name="Button" type="MeshInstance3D" parent="." unique_id=1778007063]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
+mesh = SubResource("BoxMesh_ielch")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Button" unique_id=127139682]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Button/StaticBody3D" unique_id=2072055057]
+shape = SubResource("BoxShape3D_c4s01")
+
+[node name="Detector" type="Area3D" parent="." unique_id=947548006]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detector" unique_id=786748230]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("BoxShape3D_cwdek")

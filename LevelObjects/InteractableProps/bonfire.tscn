@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://ceaab672wpf36"]
+
+[ext_resource type="Script" uid="uid://y23tifmw8l38" path="res://Characters/hazard_area.gd" id="2_rbqxl"]
+[ext_resource type="PackedScene" uid="uid://bke5iu85vums0" path="res://Assets/models/props/survival/Bonfire_Fire.fbx" id="4_g5y80"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_md2la"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ielch"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[node name="Bonfire" type="Node3D" unique_id=1192776595]
+
+[node name="Bonfire_Fire" parent="." unique_id=1211417371 instance=ExtResource("4_g5y80")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2135842900]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1950118629]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.325, 0)
+shape = SubResource("SphereShape3D_md2la")
+debug_color = Color(0.695165, 0.28288084, 1, 0.41960785)
+
+[node name="HazardArea" type="Area3D" parent="." unique_id=1642324288]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("2_rbqxl")
+metadata/_custom_type_script = "uid://y23tifmw8l38"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HazardArea" unique_id=922774699]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+shape = SubResource("BoxShape3D_ielch")

@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://cqayr4dahvvw7"]
+
+[ext_resource type="PackedScene" uid="uid://dwhsjr1ecfvon" path="res://LevelObjects/TerrainBlocks/45_ramp.tscn" id="1_46y8m"]
+[ext_resource type="PackedScene" uid="uid://68yoculyxsx6" path="res://LevelObjects/TerrainBlocks/full_box.tscn" id="2_q87rr"]
+[ext_resource type="PackedScene" uid="uid://d3d6ses33ltue" path="res://LevelObjects/TerrainBlocks/22_ramp-bottom.tscn" id="3_8qq7i"]
+[ext_resource type="PackedScene" uid="uid://dm74omc6cxdoo" path="res://LevelObjects/TerrainBlocks/22_ramp-top.tscn" id="4_wd4g2"]
+
+[node name="CsgTestLevel" type="Node3D" unique_id=2026950123]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=2141665499]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+autosmooth = true
+use_collision = true
+
+[node name="Node3D" parent="CSGCombiner3D" unique_id=2028243463 instance=ExtResource("1_46y8m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1)
+
+[node name="FullBox" parent="CSGCombiner3D" unique_id=1181696855 instance=ExtResource("2_q87rr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="FullBox2" parent="CSGCombiner3D" unique_id=785764968 instance=ExtResource("2_q87rr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+
+[node name="22_ramp-bottom" parent="CSGCombiner3D" unique_id=1092629539 instance=ExtResource("3_8qq7i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -1)
+
+[node name="22_ramp-bottom2" parent="CSGCombiner3D" unique_id=1450291569 instance=ExtResource("4_wd4g2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -1)
+
+[node name="FullBox3" parent="CSGCombiner3D" unique_id=1877740304 instance=ExtResource("2_q87rr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -1)
+
+[node name="FullBox4" parent="CSGCombiner3D" unique_id=2111524130 instance=ExtResource("2_q87rr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -1)
+
+[node name="FullBox5" parent="CSGCombiner3D" unique_id=885299415 instance=ExtResource("2_q87rr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, -1)
+
+[node name="22_ramp-bottom3" parent="CSGCombiner3D" unique_id=779183529 instance=ExtResource("4_wd4g2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+
+[node name="22_ramp-bottom4" parent="CSGCombiner3D" unique_id=2140570007 instance=ExtResource("3_8qq7i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
+
+[node name="FullBox6" parent="CSGCombiner3D" unique_id=109991943 instance=ExtResource("2_q87rr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -1, -1)
+
+[node name="FullBox7" parent="CSGCombiner3D" unique_id=192815414 instance=ExtResource("2_q87rr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, -1)
+
+[node name="22_ramp-bottom5" parent="CSGCombiner3D" unique_id=1924300 instance=ExtResource("3_8qq7i")]
+transform = Transform3D(-0.99999994, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, -0.99999994, -4, 0, -1)
+
+[node name="22_ramp-bottom6" parent="CSGCombiner3D" unique_id=1025893976 instance=ExtResource("4_wd4g2")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -5, 0, -1)
+
+[node name="FullBox8" parent="CSGCombiner3D" unique_id=782632811 instance=ExtResource("2_q87rr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -1, -1)
+
+[node name="FullBox9" parent="CSGCombiner3D" unique_id=2134164362 instance=ExtResource("2_q87rr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -1)

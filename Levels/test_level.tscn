@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://c64ft4iowjrf0"]
+
+[ext_resource type="PackedScene" uid="uid://kpug08bi18j5" path="res://Characters/Player/Player.tscn" id="1_00vsl"]
+[ext_resource type="PackedScene" uid="uid://cu0f27tl6yla4" path="res://LevelObjects/level_bounds.tscn" id="1_3158n"]
+[ext_resource type="PackedScene" uid="uid://cgntahb1s3atq" path="res://LevelObjects/oneway_platform.tscn" id="2_4k50d"]
+[ext_resource type="PackedScene" uid="uid://bds823evy1y6c" path="res://LevelObjects/save_point.tscn" id="3_4k50d"]
+[ext_resource type="PackedScene" uid="uid://qj8t3yfx8t57" path="res://Global/Camera/camera.tscn" id="4_i4ak4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gojnm"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_1c2mv"]
+sky_material = SubResource("ProceduralSkyMaterial_gojnm")
+
+[sub_resource type="Environment" id="Environment_f7g2b"]
+background_mode = 2
+sky = SubResource("Sky_1c2mv")
+glow_enabled = true
+
+[node name="Node3D" type="Node3D" unique_id=631187070]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=411273565]
+environment = SubResource("Environment_f7g2b")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=789313965]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="LevelBounds" parent="." unique_id=1372291673 instance=ExtResource("1_3158n")]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1421430622]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1318980113]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.5, 0)
+use_collision = true
+size = Vector3(16, 1, 2)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1879139602]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3.5, 0)
+use_collision = true
+size = Vector3(2, 2, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1789770548]
+transform = Transform3D(0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0, 1, 9.75, 1.5, 0)
+use_collision = true
+size = Vector3(8.5, 1, 1)
+
+[node name="OnewayPlatform" parent="." unique_id=2126878948 instance=ExtResource("2_4k50d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.5, 0)
+
+[node name="SavePoint" parent="." unique_id=1501884589 instance=ExtResource("3_4k50d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 0)
+
+[node name="Camera" parent="." unique_id=892515153 node_paths=PackedStringArray("level_bounds") instance=ExtResource("4_i4ak4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+level_bounds = NodePath("../LevelBounds")
+
+[node name="Player" parent="." unique_id=1354178040 instance=ExtResource("1_00vsl")]

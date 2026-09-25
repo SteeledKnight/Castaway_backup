@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://6svwofi6i4xq"]
+
+[ext_resource type="Script" uid="uid://b8ow7gkw4tymp" path="res://Menus/scripts/map_node.gd" id="1_kw85n"]
+
+[node name="MapNode" type="Control" unique_id=1104922082]
+custom_minimum_size = Vector2(48, 24)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 12.0
+offset_bottom = 6.0
+script = ExtResource("1_kw85n")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1385644051]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.19607843, 0.19607843, 0.19607843, 0.5019608)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect" unique_id=2017932887]
+custom_minimum_size = Vector2(2, 2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect" unique_id=2090029393]
+custom_minimum_size = Vector2(2, 2)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="ColorRect3" type="ColorRect" parent="ColorRect" unique_id=1665525703]
+custom_minimum_size = Vector2(2, 2)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ColorRect4" type="ColorRect" parent="ColorRect" unique_id=1464518681]
+custom_minimum_size = Vector2(2, 2)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="LevelName" type="Label" parent="." unique_id=1084900629]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.5019608)
+text = "Level"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TransitionBlocks" type="Control" parent="." unique_id=995688858]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

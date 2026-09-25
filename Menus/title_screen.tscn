@@ -1,0 +1,176 @@
+[gd_scene format=3 uid="uid://bt0ebh28tfngt"]
+
+[ext_resource type="Texture2D" uid="uid://dkxfre7sx8lk4" path="res://Assets/images/placeholder_title_bg.png" id="1_d8fdh"]
+[ext_resource type="Script" uid="uid://dxiwruijb5yvu" path="res://Menus/scripts/title_screen.gd" id="1_nmy6u"]
+[ext_resource type="Texture2D" uid="uid://irdfugp5qkd4" path="res://Assets/images/placeholder_logo.png" id="2_nmy6u"]
+[ext_resource type="Script" uid="uid://b36dhwgjewvi6" path="res://Global/Audio/music_auto_trigger.gd" id="4_gj0uk"]
+[ext_resource type="AudioStream" uid="uid://t5s3d8571tvd" path="res://Assets/audio/music/Music Loops Mini Set/Cinematic Heroical Loops/Stay Strong (Unbreakable).wav" id="5_at5ib"]
+
+[node name="TitleScreen" type="CanvasLayer" unique_id=199194453]
+layer = 5
+script = ExtResource("1_nmy6u")
+
+[node name="Control" type="Control" parent="." unique_id=1811329003]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="TextureRect" parent="Control" unique_id=948439482]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_d8fdh")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1211370051]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5019608, 0.5019608, 0.5019608, 0.29411766)
+
+[node name="MainMenu" type="VBoxContainer" parent="Control" unique_id=1690323096]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45
+anchor_top = 0.25
+anchor_right = 0.95
+anchor_bottom = 0.75
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Logo" type="TextureRect" parent="Control/MainMenu" unique_id=1804999265]
+layout_mode = 2
+texture = ExtResource("2_nmy6u")
+expand_mode = 5
+
+[node name="NewGame" type="Button" parent="Control/MainMenu" unique_id=719460]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "New Game"
+
+[node name="LoadGame" type="Button" parent="Control/MainMenu" unique_id=1064019749]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Load Game"
+
+[node name="NewGameMenu" type="VBoxContainer" parent="Control" unique_id=216729489]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45
+anchor_top = 0.25
+anchor_right = 0.95
+anchor_bottom = 0.75
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/NewGameMenu" unique_id=183281019]
+layout_mode = 2
+
+[node name="NewGameBack" type="Button" parent="Control/NewGameMenu/HBoxContainer" unique_id=815022939]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "<"
+
+[node name="Label" type="Label" parent="Control/NewGameMenu" unique_id=58758497]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45490196, 0.043137256, 0.03529412, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 32
+text = "Choose a save slot"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="Control/NewGameMenu" unique_id=1457079583]
+layout_mode = 2
+
+[node name="NewSlot1" type="Button" parent="Control/NewGameMenu" unique_id=549711555]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Begin Slot 1"
+
+[node name="NewSlot2" type="Button" parent="Control/NewGameMenu" unique_id=202216369]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Begin Slot 2"
+
+[node name="NewSlot3" type="Button" parent="Control/NewGameMenu" unique_id=1834209025]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Begin Slot 3"
+
+[node name="LoadGameMenu" type="VBoxContainer" parent="Control" unique_id=1725959602]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45
+anchor_top = 0.25
+anchor_right = 0.95
+anchor_bottom = 0.75
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/LoadGameMenu" unique_id=1779869373]
+layout_mode = 2
+
+[node name="LoadGameBack" type="Button" parent="Control/LoadGameMenu/HBoxContainer" unique_id=2099152677]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "<"
+
+[node name="Label" type="Label" parent="Control/LoadGameMenu" unique_id=1020597209]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45490196, 0.043137256, 0.03529412, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 32
+text = "Choose a save slot"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="Control/LoadGameMenu" unique_id=572232115]
+layout_mode = 2
+
+[node name="LoadSlot1" type="Button" parent="Control/LoadGameMenu" unique_id=1405031562]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Slot 1"
+
+[node name="LoadSlot2" type="Button" parent="Control/LoadGameMenu" unique_id=211344162]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Slot 2"
+
+[node name="LoadSlot3" type="Button" parent="Control/LoadGameMenu" unique_id=1683782044]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Slot 3"
+
+[node name="MusicAutoTrigger" type="Node" parent="." unique_id=1524663175]
+script = ExtResource("4_gj0uk")
+track = ExtResource("5_at5ib")
+metadata/_custom_type_script = "uid://b36dhwgjewvi6"

@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cgntahb1s3atq"]
+
+[ext_resource type="Script" uid="uid://chrya1uvrkupa" path="res://LevelObjects/oneway_platform.gd" id="1_r1tvj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cwdek"]
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ielch"]
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ielch"]
+size = Vector3(1, 0.11, 1)
+
+[node name="OnewayPlatform" type="Node3D" unique_id=2126878948]
+script = ExtResource("1_r1tvj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1308657408]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1640409264]
+shape = SubResource("BoxShape3D_cwdek")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1387948407]
+mesh = SubResource("BoxMesh_ielch")
+
+[node name="TriggerArea" type="Area3D" parent="." unique_id=727566819]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea" unique_id=587864356]
+shape = SubResource("BoxShape3D_ielch")

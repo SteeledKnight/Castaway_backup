@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dm74omc6cxdoo"]
+
+[node name="22_ramp-bottom" type="Node3D" unique_id=1092629539]
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=1079359367]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+use_collision = true
+polygon = PackedVector2Array(-0.5, -0.5, -0.5, 0, 0.5, 0.5, 0.5, -0.5)

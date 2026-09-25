@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cu0f27tl6yla4"]
+
+[ext_resource type="Script" uid="uid://cb4a6v6mo021y" path="res://LevelObjects/level_bounds.gd" id="1_dymxj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cwdek"]
+size = Vector3(16, 5, 6)
+
+[node name="LevelBounds" type="Area3D" unique_id=1372291673]
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
+script = ExtResource("1_dymxj")
+width = 8.0
+height = 4.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=885896689]
+shape = SubResource("BoxShape3D_cwdek")
+debug_color = Color(0, 0.6, 0.69803923, 1)

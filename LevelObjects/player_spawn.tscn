@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://crvngh08bwliw"]
+
+[ext_resource type="Script" uid="uid://b6e0uyfxul4yi" path="res://LevelObjects/player_spawn.gd" id="1_jx63k"]
+
+[sub_resource type="Gradient" id="Gradient_a6rfk"]
+offsets = PackedFloat32Array(0.75, 0.76)
+colors = PackedColorArray(0.42745098, 0, 0.60784316, 1, 0.42745098, 0, 0.60784316, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cwdek"]
+gradient = SubResource("Gradient_a6rfk")
+height = 128
+fill = 1
+fill_from = Vector2(0.4869565, 0.47826087)
+fill_to = Vector2(0.4826087, 0)
+
+[node name="PlayerSpawn" type="Node3D" unique_id=1526090652]
+script = ExtResource("1_jx63k")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=2013509034]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.02)
+text = "Spawn"
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=2107858651]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+texture = SubResource("GradientTexture2D_cwdek")

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://crwfd3b7q2dgd"]
+
+[ext_resource type="Script" uid="uid://rd4i57w3rk08" path="res://LevelObjects/level_transition/level_transition.gd" id="1_1cnuk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cwdek"]
+size = Vector3(1, 2, 1)
+
+[node name="LevelTransition" type="Node3D" unique_id=1693892197]
+script = ExtResource("1_1cnuk")
+size = null
+location = null
+target_area_name = null
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1483834478]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0)
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1594642159]
+shape = SubResource("BoxShape3D_cwdek")
+debug_color = Color(0.85490197, 0.85490197, 0, 1)

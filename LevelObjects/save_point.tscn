@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bds823evy1y6c"]
+
+[ext_resource type="Script" uid="uid://dgu5b35vffq6p" path="res://LevelObjects/save_point.gd" id="1_gs47v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cwdek"]
+albedo_color = Color(0, 0.5176471, 1, 0.8980392)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cwdek"]
+size = Vector3(1.25, 0.5, 1)
+
+[node name="SavePoint" type="Node3D" unique_id=1501884589]
+script = ExtResource("1_gs47v")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=991837478]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+size = Vector3(1, 0.5, 1)
+material = SubResource("StandardMaterial3D_cwdek")
+
+[node name="DebugLabel" type="Label3D" parent="CSGBox3D" unique_id=1852357609]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.501)
+text = "Save"
+font_size = 48
+
+[node name="Area3D" type="Area3D" parent="CSGBox3D" unique_id=1510473031]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D/Area3D" unique_id=961134105]
+shape = SubResource("BoxShape3D_cwdek")
+
+[node name="GameSavedLabel" type="Label3D" parent="CSGBox3D" unique_id=2059753109]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+text = "Game Saved!"
+
+[node name="AreaLight3D" type="AreaLight3D" parent="CSGBox3D" unique_id=970306635]
+light_color = Color(0, 0.5058824, 1, 1)

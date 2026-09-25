@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://5p3mydwpshlx"]
+
+[ext_resource type="Script" uid="uid://c5xnm8wg4gcmo" path="res://LevelObjects/InteractableProps/breakable_prop.gd" id="1_rvy8j"]
+[ext_resource type="PackedScene" uid="uid://b6carwu38xps5" path="res://Assets/models/props/Fantasy Props MegaKit[Standard]/Exports/glTF/Crate_Wooden.gltf" id="3_xeidt"]
+
+[node name="BreakableProp" type="Node3D" unique_id=1792905276]
+script = ExtResource("1_rvy8j")
+
+[node name="Crate_Wooden2" parent="." unique_id=700465106 instance=ExtResource("3_xeidt")]

@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://8fi18jvc2yg"]
+
+[ext_resource type="PackedScene" uid="uid://cu0f27tl6yla4" path="res://LevelObjects/level_bounds.tscn" id="1_nq6bd"]
+[ext_resource type="PackedScene" uid="uid://qj8t3yfx8t57" path="res://Global/Camera/camera.tscn" id="2_gb2ww"]
+[ext_resource type="PackedScene" uid="uid://cqayr4dahvvw7" path="res://Levels/csg_test_level.tscn" id="4_6nsl0"]
+[ext_resource type="PackedScene" uid="uid://crwfd3b7q2dgd" path="res://LevelObjects/level_transition/level_transition.tscn" id="5_3fvqv"]
+[ext_resource type="PackedScene" uid="uid://crvngh08bwliw" path="res://LevelObjects/player_spawn.tscn" id="5_j00f6"]
+[ext_resource type="PackedScene" uid="uid://bds823evy1y6c" path="res://LevelObjects/save_point.tscn" id="6_e4seg"]
+[ext_resource type="PackedScene" uid="uid://xkibrt6e62x4" path="res://LevelObjects/Pickups/Ability.tscn" id="7_28t6p"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_twly5"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_6dltp"]
+sky_material = SubResource("ProceduralSkyMaterial_twly5")
+
+[sub_resource type="Environment" id="Environment_eioh3"]
+background_mode = 2
+sky = SubResource("Sky_6dltp")
+glow_enabled = true
+
+[node name="Level99-2" type="Node3D" unique_id=71027285]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=548309189]
+environment = SubResource("Environment_eioh3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=215525667]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="LevelBounds" parent="." unique_id=1372291673 instance=ExtResource("1_nq6bd")]
+width = 16.0
+height = 5.0
+
+[node name="Camera" parent="." unique_id=892515153 node_paths=PackedStringArray("level_bounds") instance=ExtResource("2_gb2ww")]
+level_bounds = NodePath("../LevelBounds")
+
+[node name="CsgTestLevel" parent="." unique_id=2026950123 instance=ExtResource("4_6nsl0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="99-1" parent="." unique_id=1693892197 instance=ExtResource("5_3fvqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 0)
+size = 2.0
+location = 0
+target_level = "uid://ce7k1l2k0sl0t"
+target_area_name = "99-2"
+
+[node name="PlayerSpawn" parent="." unique_id=1526090652 instance=ExtResource("5_j00f6")]
+
+[node name="SavePoint" parent="." unique_id=1501884589 instance=ExtResource("6_e4seg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -1, 0)
+
+[node name="AbilityPickup" parent="." unique_id=1426429705 instance=ExtResource("7_28t6p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, 0)

@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://ce7k1l2k0sl0t"]
+
+[ext_resource type="PackedScene" uid="uid://cu0f27tl6yla4" path="res://LevelObjects/level_bounds.tscn" id="1_8iagl"]
+[ext_resource type="PackedScene" uid="uid://qj8t3yfx8t57" path="res://Global/Camera/camera.tscn" id="2_ro10o"]
+[ext_resource type="PackedScene" uid="uid://cqayr4dahvvw7" path="res://Levels/csg_test_level.tscn" id="4_a026p"]
+[ext_resource type="PackedScene" uid="uid://crvngh08bwliw" path="res://LevelObjects/player_spawn.tscn" id="5_myfu5"]
+[ext_resource type="PackedScene" uid="uid://crwfd3b7q2dgd" path="res://LevelObjects/level_transition/level_transition.tscn" id="5_x3tcw"]
+[ext_resource type="PackedScene" uid="uid://cl0m2ohp74q3y" path="res://LevelObjects/Doors_Switches/door.tscn" id="6_qyp6i"]
+[ext_resource type="PackedScene" uid="uid://bk8o70xun36xx" path="res://LevelObjects/Doors_Switches/switch.tscn" id="7_brivc"]
+[ext_resource type="PackedScene" uid="uid://da1mf773edha" path="res://LevelObjects/InteractableProps/test_dummy.tscn" id="8_5e8mr"]
+[ext_resource type="Script" uid="uid://cmxrxcn0khcdy" path="res://Characters/hitbox.gd" id="8_brivc"]
+[ext_resource type="PackedScene" uid="uid://5p3mydwpshlx" path="res://LevelObjects/InteractableProps/breakable_prop.tscn" id="9_v2p3h"]
+[ext_resource type="Script" uid="uid://dal4vd31kcyeg" path="res://Global/VFX/hit_particle_settings.gd" id="10_vfeb7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_twly5"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_6dltp"]
+sky_material = SubResource("ProceduralSkyMaterial_twly5")
+
+[sub_resource type="Environment" id="Environment_eioh3"]
+background_mode = 2
+sky = SubResource("Sky_6dltp")
+glow_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_gvwrk"]
+colors = PackedColorArray(0.31, 0.20925, 0.0775, 1, 0.48, 0.324, 0.12, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vfeb7"]
+gradient = SubResource("Gradient_gvwrk")
+
+[sub_resource type="Resource" id="Resource_v2p3h"]
+script = ExtResource("10_vfeb7")
+color = SubResource("GradientTexture1D_vfeb7")
+metadata/_custom_type_script = "uid://dal4vd31kcyeg"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ielch"]
+size = Vector3(0.8, 0.8, 0.8)
+
+[node name="Level99-1" type="Node3D" unique_id=71027285]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=548309189]
+environment = SubResource("Environment_eioh3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=215525667]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="LevelBounds" parent="." unique_id=1372291673 instance=ExtResource("1_8iagl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 0)
+width = 12.0
+height = 8.0
+
+[node name="Camera" parent="." unique_id=892515153 node_paths=PackedStringArray("level_bounds") instance=ExtResource("2_ro10o")]
+level_bounds = NodePath("../LevelBounds")
+
+[node name="CsgTestLevel" parent="." unique_id=2026950123 instance=ExtResource("4_a026p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="99-2" parent="." unique_id=1693892197 instance=ExtResource("5_x3tcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2, 0)
+size = 2.0
+location = 1
+target_level = "uid://8fi18jvc2yg"
+target_area_name = "99-1"
+
+[node name="PlayerSpawn" parent="." unique_id=1526090652 instance=ExtResource("5_myfu5")]
+
+[node name="Door" parent="." unique_id=1087292300 node_paths=PackedStringArray("linked_switch") instance=ExtResource("6_qyp6i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+door_audio = null
+linked_switch = NodePath("../Switch")
+
+[node name="Switch" parent="." unique_id=778868786 instance=ExtResource("7_brivc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 0)
+
+[node name="TestDummy" parent="." unique_id=1192776595 instance=ExtResource("8_5e8mr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, -0.5, 0)
+
+[node name="BreakableProp" parent="." unique_id=1792905276 instance=ExtResource("9_v2p3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 0)
+fixed_hit_count = 0
+destroy_particles = Array[ExtResource("10_vfeb7")]([SubResource("Resource_v2p3h")])
+
+[node name="Hitbox" type="Area3D" parent="BreakableProp" unique_id=663413762]
+collision_layer = 64
+script = ExtResource("8_brivc")
+metadata/_custom_type_script = "uid://cmxrxcn0khcdy"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BreakableProp/Hitbox" unique_id=1911898700]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("BoxShape3D_ielch")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="BreakableProp" unique_id=1891089622]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BreakableProp/StaticBody3D" unique_id=669683440]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("BoxShape3D_ielch")

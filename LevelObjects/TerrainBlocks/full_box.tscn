@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://68yoculyxsx6"]
+
+[node name="FullBox" type="CSGBox3D" unique_id=1181696855]
+use_collision = true
