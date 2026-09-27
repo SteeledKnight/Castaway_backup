@@ -67,7 +67,6 @@ func _ready() -> void:
 	feet.area_exited.connect(_on_zone_exited)
 	SignalBus.back_to_tile.connect(queue_free)
 	set_collision_mask_value(PLATFORM_LAYER, false)
-	$model.rotation.y = 90
 	hitbox.damaged.connect(_on_damaged)
 	hp = hp
 	pass
@@ -100,12 +99,9 @@ func _process(_delta: float) -> void:
 	update_direction()
 	check_oneways()
 	if direction.x > 0:
-		%model.rotation.y = 90
-		if attackbox:
-			attackbox.position.x = 0.5
+		rotation_degrees.y = 90
 	if direction.x < 0:
-		%model.rotation.y = -90
-		%Attackbox.position.x = -0.5
+		rotation_degrees.y = -90
 	change_state(current_state.process(_delta))
 
 func _physics_process(_delta: float) -> void:
@@ -136,7 +132,7 @@ func set_abilities() -> void:
 	if has_ability(&"high_jump"):
 		JUMP_VELOCITY = HIGH_JUMP_VELOCITY
 	else:
-		print("returned false")
+		print("No abilites")
 
 #region /// State Management
 func initialize_states() -> void:
@@ -155,7 +151,6 @@ func initialize_states() -> void:
 		state.init()
 	
 	change_state(current_state)
-	$Label3D.text = current_state.name
 	current_state.enter()
 
 func change_state(new_state : PlayerState) -> void:
@@ -170,7 +165,6 @@ func change_state(new_state : PlayerState) -> void:
 	states.push_front(new_state)
 	current_state.enter()
 	states.resize(3)
-	$Label3D.text = current_state.name
 
 func _on_damaged(attack : Attackbox) -> void:
 	if current_state == PlayerStateDeath:

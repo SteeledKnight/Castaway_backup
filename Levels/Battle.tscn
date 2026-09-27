@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://dbnorbi7akbbb"]
+
+[ext_resource type="PackedScene" uid="uid://cu0f27tl6yla4" path="res://LevelObjects/level_bounds.tscn" id="1_8rw54"]
+[ext_resource type="PackedScene" uid="uid://qj8t3yfx8t57" path="res://Global/Camera/camera.tscn" id="2_my0x0"]
+[ext_resource type="PackedScene" uid="uid://crvngh08bwliw" path="res://LevelObjects/player_spawn.tscn" id="3_sh0mu"]
+[ext_resource type="PackedScene" uid="uid://crwfd3b7q2dgd" path="res://LevelObjects/level_transition/level_transition.tscn" id="4_n2ool"]
+[ext_resource type="PackedScene" uid="uid://cgntahb1s3atq" path="res://LevelObjects/oneway_platform.tscn" id="5_my0x0"]
+[ext_resource type="PackedScene" uid="uid://cs2c8o4kgos8l" path="res://Characters/Enemies/Slug/slug2.tscn" id="6_sh0mu"]
+[ext_resource type="PackedScene" uid="uid://m8x42o03vomc" path="res://LevelObjects/Pickups/item_pickups/health_pickup.tscn" id="7_n2ool"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nmmri"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_evtuj"]
+sky_material = SubResource("ProceduralSkyMaterial_nmmri")
+
+[sub_resource type="Environment" id="Environment_1obps"]
+background_mode = 2
+sky = SubResource("Sky_evtuj")
+glow_enabled = true
+
+[node name="LevelTemplate" type="Node3D" unique_id=71027285]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1823501064]
+environment = SubResource("Environment_1obps")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1920069323]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="LevelBounds" parent="." unique_id=1372291673 instance=ExtResource("1_8rw54")]
+
+[node name="Camera" parent="." unique_id=892515153 node_paths=PackedStringArray("level_bounds") instance=ExtResource("2_my0x0")]
+level_bounds = NodePath("../LevelBounds")
+
+[node name="PlayerSpawn" parent="." unique_id=1526090652 instance=ExtResource("3_sh0mu")]
+
+[node name="99-1" parent="." unique_id=1693892197 instance=ExtResource("4_n2ool")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, 0)
+size = 2.0
+location = 0
+target_level = "uid://ce7k1l2k0sl0t"
+target_area_name = "Battle"
+
+[node name="Terrain" type="Node3D" parent="." unique_id=1800325252]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Terrain" unique_id=2076293067]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 0)
+use_collision = true
+size = Vector3(18, 1, 1)
+
+[node name="OnewayPlatform" parent="Terrain" unique_id=2126878948 instance=ExtResource("5_my0x0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2.5, 0)
+
+[node name="OnewayPlatform2" parent="Terrain" unique_id=1213109125 instance=ExtResource("5_my0x0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.5, 0)
+
+[node name="OnewayPlatform3" parent="Terrain" unique_id=1692889755 instance=ExtResource("5_my0x0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2.5, 0)
+
+[node name="OnewayPlatform4" parent="Terrain" unique_id=1141736432 instance=ExtResource("5_my0x0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.5, 0)
+
+[node name="OnewayPlatform5" parent="Terrain" unique_id=1873492242 instance=ExtResource("5_my0x0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.5, 0)
+
+[node name="OnewayPlatform6" parent="Terrain" unique_id=1864394769 instance=ExtResource("5_my0x0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+
+[node name="Slug2" parent="." unique_id=216003428 instance=ExtResource("6_sh0mu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, 0)
+starting_direction = "Right"
+
+[node name="HealthPickup" parent="." unique_id=1527175810 instance=ExtResource("7_n2ool")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3, 0)
+
+[node name="Slug3" parent="." unique_id=150358274 instance=ExtResource("6_sh0mu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 0)
+
+[node name="Slug4" parent="." unique_id=1045494217 instance=ExtResource("6_sh0mu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="Slug5" parent="." unique_id=309443572 instance=ExtResource("6_sh0mu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 0)
+
+[node name="Slug6" parent="." unique_id=2003921314 instance=ExtResource("6_sh0mu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)

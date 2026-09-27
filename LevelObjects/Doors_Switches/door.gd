@@ -33,7 +33,6 @@ func _check_open() -> void:
 		_door_is_open()
 
 func _door_is_open() -> void:
-	print("opening")
 	animation_player.play("opened")
 	pass
 

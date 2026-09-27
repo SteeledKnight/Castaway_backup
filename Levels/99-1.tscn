@@ -65,6 +65,13 @@ location = 1
 target_level = "uid://8fi18jvc2yg"
 target_area_name = "99-1"
 
+[node name="Battle" parent="." unique_id=576366572 instance=ExtResource("5_x3tcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 0)
+size = 2.0
+location = 1
+target_level = "uid://dbnorbi7akbbb"
+target_area_name = "99-1"
+
 [node name="PlayerSpawn" parent="." unique_id=1526090652 instance=ExtResource("5_myfu5")]
 
 [node name="Door" parent="." unique_id=1087292300 node_paths=PackedStringArray("linked_switch") instance=ExtResource("6_qyp6i")]

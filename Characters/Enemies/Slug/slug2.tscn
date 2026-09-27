@@ -1,0 +1,286 @@
+[gd_scene format=3 uid="uid://cs2c8o4kgos8l"]
+
+[ext_resource type="Script" uid="uid://bcd42p2s7botf" path="res://Characters/Enemies/scripts/enemy.gd" id="1_3co4x"]
+[ext_resource type="Script" uid="uid://bnuert0h4e8op" path="res://Characters/Enemies/scripts/sensors/edge_detector.gd" id="2_xyymt"]
+[ext_resource type="Script" uid="uid://gfaftvr6j6h7" path="res://Characters/Enemies/scripts/sensors/player_sensor.gd" id="3_e2k7m"]
+[ext_resource type="Script" uid="uid://y23tifmw8l38" path="res://Characters/hazard_area.gd" id="3_je13g"]
+[ext_resource type="Script" uid="uid://cmxrxcn0khcdy" path="res://Characters/hitbox.gd" id="4_aaudc"]
+[ext_resource type="Script" uid="uid://blknhqlxca7o4" path="res://Characters/Enemies/scripts/state_management/enemy_state_machine.gd" id="5_je13g"]
+[ext_resource type="Script" uid="uid://bidnhueic14qj" path="res://Characters/Enemies/states/es_death.gd" id="6_upa8y"]
+[ext_resource type="Script" uid="uid://chhmbdnvdwemn" path="res://Characters/Enemies/scripts/basic_decision_engine.gd" id="6_ygfu3"]
+[ext_resource type="Script" uid="uid://l77wta81hwxm" path="res://Characters/Enemies/states/es_stun.gd" id="7_e2k7m"]
+[ext_resource type="Script" uid="uid://bkt3j7iygu2ca" path="res://Characters/Enemies/states/es_walk.gd" id="8_27qmd"]
+[ext_resource type="Script" uid="uid://dcawd3jc1smm5" path="res://Characters/Enemies/scripts/item_drops/item_drop.gd" id="11_27qmd"]
+[ext_resource type="Script" uid="uid://c0vu5wg3rgw07" path="res://Characters/Enemies/scripts/item_drops/item_data.gd" id="12_skygn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k2fys"]
+transparency = 1
+albedo_color = Color(0.9652652, 0.6695985, 0.21367148, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_uhpm5"]
+material = SubResource("StandardMaterial3D_k2fys")
+radius = 0.4
+height = 0.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_jpak5"]
+radius = 0.05
+height = 0.1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v7wcr"]
+radius = 0.25
+height = 0.8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vr4bn"]
+radius = 0.25
+height = 0.8
+
+[sub_resource type="Animation" id="Animation_k2fys"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/MeshInstance3D:mesh:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh/MeshInstance3D:mesh:height")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/MeshInstance3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.25, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/MeshInstance3D:mesh:material:albedo_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.9652652, 0.6695985, 0.21367148, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1fdof"]
+resource_name = "death"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/MeshInstance3D:mesh:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.4, 0.7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh/MeshInstance3D:mesh:height")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 0.1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/MeshInstance3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.25, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/MeshInstance3D:mesh:material:albedo_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.9652652, 0.6695985, 0.21367148, 1), Color(0.97, 0.66736007, 0.21340004, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_u6sv8"]
+resource_name = "stun"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/MeshInstance3D:mesh:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.4, 0.3, 0.4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh/MeshInstance3D:mesh:height")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.5, 0.7, 0.5]
+}
+
+[sub_resource type="Animation" id="Animation_5p2du"]
+resource_name = "walk"
+length = 0.667
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/MeshInstance3D:mesh:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.4, 0.3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_11gun"]
+_data = {
+&"RESET": SubResource("Animation_k2fys"),
+&"death": SubResource("Animation_1fdof"),
+&"stun": SubResource("Animation_u6sv8"),
+&"walk": SubResource("Animation_5p2du")
+}
+
+[sub_resource type="Resource" id="Resource_skygn"]
+script = ExtResource("12_skygn")
+item = "uid://m8x42o03vomc"
+metadata/_custom_type_script = "uid://c0vu5wg3rgw07"
+
+[node name="Slug2" type="CharacterBody3D" unique_id=216003428]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_3co4x")
+starting_direction = null
+
+[node name="Mesh" type="Node3D" parent="." unique_id=1763601549]
+unique_name_in_owner = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh" unique_id=911009278]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = SubResource("SphereMesh_uhpm5")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Mesh" unique_id=1704935198]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.5, 0)
+mesh = SubResource("SphereMesh_jpak5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1320686227]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("CapsuleShape3D_v7wcr")
+
+[node name="HazardArea" type="Area3D" parent="." unique_id=4191912]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+script = ExtResource("3_je13g")
+metadata/_custom_type_script = "uid://y23tifmw8l38"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HazardArea" unique_id=789196895]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("CapsuleShape3D_vr4bn")
+
+[node name="Hitbox" type="Area3D" parent="." unique_id=913452648]
+unique_name_in_owner = true
+collision_layer = 32
+collision_mask = 0
+monitoring = false
+script = ExtResource("4_aaudc")
+metadata/_custom_type_script = "uid://cmxrxcn0khcdy"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=198220998]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("CapsuleShape3D_vr4bn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=252454573]
+libraries/ = SubResource("AnimationLibrary_11gun")
+
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=1557560557]
+script = ExtResource("5_je13g")
+metadata/_custom_type_script = "uid://blknhqlxca7o4"
+
+[node name="ESWalk" type="Node" parent="EnemyStateMachine" unique_id=1880079835]
+unique_name_in_owner = true
+script = ExtResource("8_27qmd")
+metadata/_custom_type_script = "uid://bkt3j7iygu2ca"
+
+[node name="ESDeath" type="Node" parent="EnemyStateMachine" unique_id=2046935631]
+unique_name_in_owner = true
+script = ExtResource("6_upa8y")
+metadata/_custom_type_script = "uid://bidnhueic14qj"
+
+[node name="ESStun" type="Node" parent="EnemyStateMachine" unique_id=1145819078]
+unique_name_in_owner = true
+script = ExtResource("7_e2k7m")
+metadata/_custom_type_script = "uid://l77wta81hwxm"
+
+[node name="BasicDecisionEngine" type="Node" parent="." unique_id=1805002236]
+script = ExtResource("6_ygfu3")
+metadata/_custom_type_script = "uid://chhmbdnvdwemn"
+
+[node name="ItemDrop" type="Node3D" parent="." unique_id=362390565]
+script = ExtResource("11_27qmd")
+items = Array[ExtResource("12_skygn")]([SubResource("Resource_skygn")])
+metadata/_custom_type_script = "uid://dcawd3jc1smm5"
+
+[node name="EdgeDetector" type="RayCast3D" parent="." unique_id=21467309]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0)
+target_position = Vector3(0, -0.25, 0)
+script = ExtResource("2_xyymt")
+metadata/_custom_type_script = "uid://bnuert0h4e8op"
+
+[node name="PlayerSensor" type="Area3D" parent="." unique_id=1384531092]
+script = ExtResource("3_e2k7m")
+metadata/_custom_type_script = "uid://gfaftvr6j6h7"
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="PlayerSensor" unique_id=1590488477]
+transform = Transform3D(1, 0, 0, 0, 1, 1.7484555e-07, 0, -1.7484555e-07, 1, 1, 0.25, 0)
+polygon = PackedVector2Array(-1, 0, 4, 2, 4, -2)

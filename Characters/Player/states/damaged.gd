@@ -1,6 +1,6 @@
 class_name PlayerStateDamaged extends PlayerState
 
-@export var knockback : float
+var knockback : float
 @export var invulnerable_duration : float = 1.0
 var invulnerable : bool = false
 var time : float = 0.0
